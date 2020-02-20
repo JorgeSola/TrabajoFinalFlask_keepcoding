@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %} ESTADO DE LA INVERSIÓN {% endblock %}
+
+{% block content %}
+    <h1>myCRYPTO</h1>
+    <nav><a href="/" class="button button-primary">Inicio</a>            <a href='/purchase' class= 'button button-primary'>Compra</a>         <a class=".button.button-primary:hovers">Estado</a></nav>
+
+
+    <table>
+        <tr>
+            <th> ESTADO DE LA INVERSIÓN</th>
+        </tr>
+        <tr>
+            <td>Invertido:</td>
+            <td>
+            {% if investments %}
+                <td>{{investments}} €</td>
+            {% else %}
+            <td></td>
+            {% endif %}
+            
+        </tr>
+        <tr>
+            <td>Valor actual:</td>
+            <td>
+            {% if actual_value %}
+                <td>{{actual_value}} €</td>
+            {% else %}
+            <td></td>
+            {% endif %}
+            
+        </tr>
+    <table>
+    <a href="/" class = 'button button-primary u-pull-right'>Volver</a>
+        
+
+    
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %} myCripto {% endblock %}
+
+{% block content %}
+    <h1>myCripto</h1>
+    
+    <nav><a  class=".button.button-primary:hovers">Inicio</a>           <a href = '/purchase' class="button button-primary">Compra</a>         <a href = '/status' class="button button-primary">Estado</a>        
+    <form action="/" method="post">
+
+        {% if error %}
+            <p>{{error}}</p>
+        {% endif %}
+
+        {% if info %}
+            <table class = 'u-full-width'> MOVIMIENTOS
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>From</th>
+                    <th>Q</th>
+                    <th>To</th>
+                    <th>Q</th>
+                    <th>P.U</th>
+                </tr>
+                {% for item in info %}
+                    <tr class = 'infoRow'>
+                        <td>{{item[1]}}</td>
+                        <td>{{item[2]}}</td>
+                        <td>{{item[3]}}</td>
+                        <td>{{item[4]}}</td>
+                        <td>{{item[5]}}</td>
+                        <td>{{item[6]}}</td>
+                        <td>{{item[4]/item[6]}}</td>
+                    </tr>
+                {% endfor %}        
+            </table>
+        
+        {% else %}
+            <table class="u-full-width ">
+                <tr>
+                    <th>SIN MOVIMIENTOS</th>
+                </tr>
+            </table>
+            
+            
+        
+        {% endif %}
+    </form>
+    <a href="/status" class = 'button button-primary u-pull-left' name = status type = submit>Status</a>
+    <a href="/purchase" class = 'button button-primary u-pull-right' name = plus>+</a>
+    
+{% endblock %}
+

@@ -1,0 +1,29 @@
+.field-error {
+    color: red;
+    font-size: 0.8em;
+    margin-top: -12px;
+}
+.movement {
+
+    color: lightcoral;
+    max-width: max-content;
+    font-size: 50px;
+    text-align: center;
+}
+.cabeceraQuery{
+
+    margin-top: 100px;
+    margin-bottom: 100px;
+    font-weight: 400;
+    max-width: max-content;
+    
+}
+.infoRow{
+    text-align: center;
+
+}
+.foot{
+    text-align: left;
+    margin-top: 1000px;
+    
+}

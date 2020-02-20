@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %} Buscador de películas {% endblock %}
+
+{% block content %}
+    <h1>myCRIPTO</h1>
+    
+    <nav><a href="/" class="button button-primary">Inicio</a>            <a class=".button.button-primary:hovers">Compra</a>         <a href ='/status' class="button button-primary">Estado</a></nav>
+    <table class = 'u-full-width'>
+        <tr class="u-full-width">
+            <th class = 'cabeceraQuery'>COMPRA DE CRIPTOS</th>
+        </tr>
+    </table>
+    <form action="/purchase" method="post">
+    
+    
+    </form>
+    <form action="/purchase" method="post">
+    
+    {{ form.hidden_tag() }}
+        <div class = 'row'>
+            <div class = 'one columns'>
+                <p>From:</p>
+            </div>
+            <div class = 'five columns select'>
+            {{ form.come_from(class="u-full-width", autocomplete = 'off') }}
+            {% if form.come_from.errors %}
+                {% for error in form.come_from.errors %}
+                    <p class='field-error'>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+            </div>
+            <div class ='one columns'>
+                <p>To:</p>
+            </div>
+            <div class = 'five columns'>
+                {{ form.go_to(class="u-full-width", autocomplete = 'off') }}
+                {% if form.go_to.errors %}
+                    {% for error in form.go_to.errors %}
+                        <p class='field-error'>{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class = 'row'>
+            <div class = 'one columns'>
+                <p>Q:</p> 
+            </div>
+            <div class = 'three columns'>
+                {{ form.Q_from(class="u-full-width", autocomplete = 'off') }}
+                {% if form.Q_from.errors %}
+                    {% for error in form.Q_from.errors %}
+                        <p class='field-error'>{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class = 'two columns'>
+                {{ form.submit(class="button-primary ") }}
+            </div>
+            <div class = 'one columns'>
+                <p >Q:</p>
+            </div>
+            <div class="five columns">
+                <table>
+                    {% if conversor %}
+                        <tr>
+                            <p>{{conversor}}</p>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <p></p>
+                        </tr>
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+        <div class ='row'>
+            <div class = 'six columns'>
+                <p></p>
+            </div>
+                
+            <div class = 'one columns'>
+                <p>P.U:</p>
+            </div>
+            <div class = 'five columns'>
+                <table>
+                    {% if PU %}
+                        <tr>
+                            <p>{{PU}}</p>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <p></p>
+                        </tr>
+                    {% endif %}
+            </div>
+        </div>
+        {% if conversor %}
+            {{ form.accept(class="u-pull-right button button-primary") }}
+        {% endif %}
+    </form>
+{% endblock %}
