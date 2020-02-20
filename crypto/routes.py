@@ -87,13 +87,20 @@ def query(consulta):
 
 def insertTable(values):
 
-    conn = sqlite3.connect('./data/base_date.db')
-    c = conn.cursor()
-    consulta = """INSERT INTO cripto VALUES (NULL,?,?,?,?,?,?,?)"""
-    add = c.execute(consulta,values)
-    conn.commit()
-    conn.close()
-    return add
+    try:
+        conn = sqlite3.connect('./data/base_date.db')
+        c = conn.cursor()
+        consulta = """INSERT INTO cripto VALUES (NULL,?,?,?,?,?,?,?)"""
+        add = c.execute(consulta,values)
+        conn.commit()
+        conn.close()
+        return add
+    
+    except sqlite3.Error as e:
+        logging.debug(f'Error type {e}')
+        error = 'Error al conectarse a la base de datos'
+        
+        return render_template('index.html', error = error, information = None)
  
 @app.route('/')
 def index():
