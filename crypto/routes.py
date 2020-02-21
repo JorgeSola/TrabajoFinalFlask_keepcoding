@@ -55,7 +55,13 @@ def inversionCalculate(inversion_results):
 
 def conversorCalculate(url, final_coin):
 
-    coin_info = requests.get(url)
+    try:
+        coin_info = requests.get(url)
+    
+    except:
+        error = f'Problemas de conexión con la web. Vuelva a intentarlo más tarde.'
+        return render_template('index.html', error = error)
+
     coin_info = coin_info.json()
 
     logging.debug(f'COIN INFO:{coin_info}') #logging
@@ -80,14 +86,15 @@ def query(consulta):
 
     except sqlite3.Error as e:
         logging.debug(f'Error type {e}')
-        error = 'Error al conectarse a la base de datos'
-        
-        return render_template('index.html', error = error, information = None)
-    
+        error = f'Error al conectarse a la base de datos.{e}'        
+        return render_template('index.html', error = error)
+
+
 
 def insertTable(values):
 
     try:
+
         conn = sqlite3.connect('./data/base_date.db')
         c = conn.cursor()
         consulta = """INSERT INTO cripto VALUES (NULL,?,?,?,?,?,?,?)"""
@@ -95,19 +102,19 @@ def insertTable(values):
         conn.commit()
         conn.close()
         return add
-    
+
     except sqlite3.Error as e:
         logging.debug(f'Error type {e}')
-        error = 'Error al conectarse a la base de datos'
+        error = f'Error al conectarse a la base de datos.{e}'        
+        return render_template('index.html', error = error)
         
-        return render_template('index.html', error = error, information = None)
+
  
 @app.route('/')
 def index():
 
     consulta = """SELECT * FROM cripto"""
     information = query(consulta)
-
     return render_template('index.html', info = information, error = None)
     
 

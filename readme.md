@@ -20,13 +20,14 @@ Una vez conseguida la API key, vaya al archivo routes.py
 ```
 Escriba la su API key donde pone <escriba aquí su Api key>
 ```
+5. Ir a congif_public.py y escribir una SECRET_KEY
 
-5. Ejecutar el archivo create_table.py una única vez para crear la tabla de datos.
+6. Ejecutar el archivo create_table.py una única vez para crear la tabla de datos.
 ```
 run create_table.py 
 ```
 
-6. Lanzar la aplicación
+7. Lanzar la aplicación
 ```
 flask run
 ```
