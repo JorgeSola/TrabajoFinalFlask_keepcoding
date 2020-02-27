@@ -16,7 +16,7 @@ coins = ['BTC','ETH','LTC','BCH','BNB','USDT','EOS','BSV','XLM','ADA','TXR']
 dt = datetime.now()
 date = ("{}/{}/{}".format(str(dt.day).zfill(2),str(dt.month).zfill(2),dt.year))
 time = ("{}:{}:{}".format(str(dt.hour).zfill(2),str(dt.minute).zfill(2),str(dt.second).zfill(2)))
-apiKey = '7dfd8df7-76e7-4829-8fd7-b03aa6eedb03'
+apiKey = '<Escriba aquí su APIkey>'
 
 def puCalculate(start_Q,conversor):
 
